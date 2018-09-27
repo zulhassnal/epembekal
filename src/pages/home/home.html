@@ -3,16 +3,29 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>{{ userData.syarikat_nama }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-list>
+    <ion-item-divider color="primary">
+      Permohonan Terbitan Tempatan
+    </ion-item-divider>
+    <ion-item>Statistik Permohonan <span item-right>10</span></ion-item>
+    <ion-item>Sedang Disemak <span item-right>10</span></ion-item>
+    <ion-item>Telah Disahkan <span item-right>10</span></ion-item>
+    <ion-item>Sijil <span item-right>10</span></ion-item>
+  </ion-list>
+  <p></p>
+  <ion-list>
+    <ion-item-divider color="primary">
+      Permohonan Terbitan Luar Negara
+    </ion-item-divider>
+    <ion-item>Statistik Permohonan <span item-right>10</span></ion-item>
+    <ion-item>Sedang Disemak <span item-right>10</span> </ion-item>
+    <ion-item>Telah Disahkan <span item-right>10</span></ion-item>
+    <ion-item>Sijil <span item-right>10</span></ion-item>
+  </ion-list>
+  <!-- <button ion-button secondary menuToggle>Toggle Menu</button> -->
 </ion-content>

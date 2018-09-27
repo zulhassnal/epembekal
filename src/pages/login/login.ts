@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -32,6 +33,7 @@ export class LoginPage {
           console.log(this.responseData);
           localStorage.setItem('userData', JSON.stringify(this.responseData));
           //this.navCtrl.push(TabsPage);
+          this.navCtrl.setRoot(HomePage);
           console.log('set root HomePage');
       }
       else{ 

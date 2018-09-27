@@ -7,8 +7,17 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
+  userData = [];
+  //user = [];
   constructor(public navCtrl: NavController) {
 
+  }
+
+  ionViewDidLoad(){
+    let user = JSON.parse(localStorage.getItem('userData'));
+    this.userData = user["syarikat_profile"];
+    //this.userData = user;
+    console.log('localstorage :' + user["syarikat_profile"]);
   }
 
 }
