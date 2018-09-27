@@ -10,6 +10,7 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { TerbitanTempatanPage } from '../pages/terbitan-tempatan/terbitan-tempatan';
 import { TerbitanLuarnegaraPage } from '../pages/terbitan-luarnegara/terbitan-luarnegara';
+import { PengumumanPage } from '../pages/pengumuman/pengumuman';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     ListPage,
     LoginPage,
     TerbitanTempatanPage,
-    TerbitanLuarnegaraPage
+    TerbitanLuarnegaraPage,
+    PengumumanPage
   ],
   imports: [
     BrowserModule, HttpModule,HttpClientModule,
@@ -36,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     ListPage,
     LoginPage,
     TerbitanTempatanPage,
-    TerbitanLuarnegaraPage
+    TerbitanLuarnegaraPage,
+    PengumumanPage
   ],
   providers: [
     StatusBar,

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home';
+import { PengumumanPage } from '../pengumuman/pengumuman';
 
 @IonicPage()
 @Component({
@@ -13,12 +14,22 @@ export class LoginPage {
 
   responseData : any;
   userData = {"pengguna_idpengguna": "", "pengguna_katalaluan": ""};
+  pengumuman : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
   public authService:AuthServiceProvider) {
   }
 
   ionViewDidLoad() {
+
+    this.authService.pengumuman().then( result => {
+      // console.log("Home.ts Result :" + result);
+      let list : any = result;
+      this.pengumuman = list;
+      console.log('Pengumuman' + list);
+    }).catch(err => {
+       console.log("Failed to get Pengumuman !: " + err);
+    });
     console.log('ionViewDidLoad LoginPage');
   }
 
@@ -46,5 +57,9 @@ export class LoginPage {
 
 }
 
-
+  detailPengumuman(params){
+    if (!params) params = {};
+    this.navCtrl.push(PengumumanPage, {item : params});
+    console.log('detail pengumuman : ' +  params);
+  }
 }

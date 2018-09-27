@@ -10,15 +10,9 @@
 
 <ion-content padding>
 
-  <ion-slides pager style=" height: 200px;">
-    <ion-slide>
-      <p>slide 1</p>
-    </ion-slide>
-    <ion-slide>
-      <p>slide 2</p>
-    </ion-slide>
-    <ion-slide>
-      <p>slide 3</p>
+  <ion-slides pager style=" height: 200px;" >
+    <ion-slide *ngFor="let listpengumuman of pengumuman">
+      <p>{{ listpengumuman.pengumuman_summary }}...<span (click)="detailPengumuman(listpengumuman)">Selanjutnya</span></p>
     </ion-slide>
   </ion-slides>
 

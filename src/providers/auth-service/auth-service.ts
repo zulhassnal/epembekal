@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 
 let apiURL = 'http://www.kometsoft.net/epembekal/api/login.php';
 let apiSemakanStatus = 'http://www.kometsoft.net/epembekal/api/semakan-status.php?';
+let apiBaseUrl = "http://localhost/kkmm/api";
 
 @Injectable()
 export class AuthServiceProvider {
@@ -53,6 +54,21 @@ export class AuthServiceProvider {
         });
     });
 
+  }
+
+  pengumuman(){
+    let url : string = apiBaseUrl + '/pengumuman.php';
+
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(url)
+      .subscribe(data => {
+        resolve(data);
+        console.log("Data Pengumuman: " + data);
+      }, err => {
+        reject(err);
+        console.log("Error to get pengumuman :" + err);
+      })
+    })
   }
 
 }
