@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from  '../pages/login/login';
 import { TerbitanTempatanPage } from  '../pages/terbitan-tempatan/terbitan-tempatan';
+import { TerbitanLuarnegaraPage } from  '../pages/terbitan-luarnegara/terbitan-luarnegara';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +27,7 @@ export class MyApp {
     this.pages = [
       { title: 'Utama', component: HomePage },
       { title: 'Terbitan Tempatan', component: TerbitanTempatanPage },
-      { title: 'Terbitan Luar Negara', component: ListPage },
+      { title: 'Terbitan Luar Negara', component: TerbitanLuarnegaraPage },
       { title: 'Keluar', component: LoginPage }
     ];
 
