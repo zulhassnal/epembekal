@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
+import { TerbitanTempatanPage } from '../pages/terbitan-tempatan/terbitan-tempatan';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     MyApp,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    TerbitanTempatanPage
   ],
   imports: [
     BrowserModule, HttpModule,HttpClientModule,
@@ -30,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     MyApp,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    TerbitanTempatanPage
   ],
   providers: [
     StatusBar,
