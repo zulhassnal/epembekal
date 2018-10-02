@@ -22,9 +22,9 @@ export class ApiProvider {
     console.log('Hello ApiProvider Provider');
   }
 
-  utamaTempatan(){
+  utamaTempatan(pengguna_id){
     console.log('Utama Tempatan...');
-    let url : string = apiBaseUrl + '/utama-tempatan-pemohon.php?pengguna_id=357-11111111';
+    let url : string = apiBaseUrl + '/utama-tempatan-pemohon.php?pengguna_id='+ pengguna_id;
 
     return new Promise((resolve, reject) => {
       this.httpClient.get(url)
@@ -34,6 +34,23 @@ export class ApiProvider {
       }, err => {
         reject(err);
         console.log("Error to get utama tempatan :" + err);
+      })
+    })
+
+
+  }
+  utamaLuarNegara(pengguna_id){
+    console.log('Utama Luar Negara...');
+    let url : string = apiBaseUrl + '/utama-luar-negara-pemohon.php?pengguna_id='+ pengguna_id;
+
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(url)
+      .subscribe(data => {
+        resolve(data);
+        //console.log("api utama tempatan: " + JSON.stringify(data));
+      }, err => {
+        reject(err);
+        console.log("Error to get utamaluar negara :" + err);
       })
     })
 

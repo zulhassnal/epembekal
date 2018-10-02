@@ -20,12 +20,12 @@
   <p></p>
   <ion-list>
     <ion-item-divider color="primary">
-      Permohonan Terbitan Luar Negara
+      Permohonan Terbitan Luar Negara <span item-right>{{ utamaLuarNegara.total }}</span>
     </ion-item-divider>
-    <ion-item>Statistik Permohonan <span item-right>10</span></ion-item>
-    <ion-item>Sedang Disemak <span item-right>10</span> </ion-item>
-    <ion-item>Telah Disahkan <span item-right>10</span></ion-item>
-    <ion-item>Sijil <span item-right>10</span></ion-item>
+    <ion-item>Statistik Permohonan <span item-right>{{ utamaLuarNegara.baru }}</span></ion-item>
+    <ion-item>Sedang Disemak <span item-right>{{ utamaLuarNegara.semak }}</span> </ion-item>
+    <ion-item>Telah Disahkan <span item-right>{{ utamaLuarNegara.sah }}</span></ion-item>
+    <ion-item>Sijil <span item-right>{{ utamaLuarNegara.sijil }}</span></ion-item>
   </ion-list>
   <!-- <button ion-button secondary menuToggle>Toggle Menu</button> -->
 </ion-content>
