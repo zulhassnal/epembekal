@@ -56,4 +56,21 @@ export class ApiProvider {
 
 
   }
+
+
+  terbitanTempatan(){
+    let url : string = apiBaseUrl + '/semakan-status.php?pengguna_id=357-11111111';
+    //console.log('terbitanTempatan...');
+
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(url)
+      .subscribe(data => {
+        resolve(data);
+        //console.log("api utama tempatan: " + JSON.stringify(data));
+      }, err => {
+        reject(err);
+        console.log("Error to get terbitan tempatan :" + err);
+      })
+    })
+  }
 }
