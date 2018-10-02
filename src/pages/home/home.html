@@ -10,12 +10,12 @@
 <ion-content padding>
   <ion-list>
     <ion-item-divider color="primary">
-      Permohonan Terbitan Tempatan
+      Permohonan Terbitan Tempatan <span item-right>{{ utamaTempatan.total }}</span>
     </ion-item-divider>
-    <ion-item>Statistik Permohonan <span item-right>10</span></ion-item>
-    <ion-item>Sedang Disemak <span item-right>10</span></ion-item>
-    <ion-item>Telah Disahkan <span item-right>10</span></ion-item>
-    <ion-item>Sijil <span item-right>10</span></ion-item>
+    <ion-item>Statistik Permohonan <span item-right>{{ utamaTempatan.baru }}</span></ion-item>
+    <ion-item>Sedang Disemak <span item-right>{{ utamaTempatan.semak }}</span></ion-item>
+    <ion-item>Telah Disahkan <span item-right>{{ utamaTempatan.sah }}</span></ion-item>
+    <ion-item>Sijil <span item-right>{{ utamaTempatan.sijil }}</span></ion-item>
   </ion-list>
   <p></p>
   <ion-list>

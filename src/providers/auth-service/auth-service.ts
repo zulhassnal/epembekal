@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-let apiURL = 'http://www.kometsoft.net/epembekal/api/login.php';
-let apiSemakanStatus = 'http://www.kometsoft.net/epembekal/api/semakan-status.php?';
-let apiBaseUrl = "http://localhost/kkmm/api";
+
+let apiURL = 'http://localhost/epembekal/api/login.php';
+let apiSemakanStatus = 'http://localhost/epembekal/api/semakan-status.php?';
+let apiBaseUrl = "http://localhost/epembekal/api";
 
 @Injectable()
 export class AuthServiceProvider {
