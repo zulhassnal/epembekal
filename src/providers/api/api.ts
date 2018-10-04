@@ -10,7 +10,8 @@ import 'rxjs/add/operator/map';
   and Angular DI.
 */
 
-let apiBaseUrl = "http://localhost/epembekal/api";
+//let apiBaseUrl = "http://localhost/epembekal/api";
+let apiBaseUrl ="http://203.217.179.121/api/epembekal";
 
 @Injectable()
 export class ApiProvider {

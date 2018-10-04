@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the TerbitanLuarnegaraPage page.
@@ -18,12 +19,23 @@ import { ApiProvider } from '../../providers/api/api';
 export class TerbitanLuarnegaraPage {
   userData = [];
   //terbitanTempatan: any;
+  cetakPdf: {
+    ids: string,
+    idp: string,
+    sid: number
+  }
   terbitanLuarNegara : {permohonan_status: string,permohonan_tarikhdaftar:Date,jenis_permohonan:string,
     no_sijil:string, status_sijil:string, sijil_tarikhmula:Date, sijil_tarikhtamat:Date, semakan_status:string, semakan_catatantidaklengkap:string}
   constructor(public api: ApiProvider, public navCtrl: NavController, 
     public navParams: NavParams,public alertCtrl: AlertController) {
       this.terbitanLuarNegara = {permohonan_status: null, permohonan_tarikhdaftar: null,
         jenis_permohonan:null, no_sijil:null, status_sijil:null, sijil_tarikhmula:null, sijil_tarikhtamat:null, semakan_status:null,semakan_catatantidaklengkap:null}
+      
+    this.cetakPdf = {
+      ids: null,
+      idp: null,
+      sid: Math.random()
+    }
   }
 
   ionViewDidLoad() {
@@ -48,6 +60,10 @@ export class TerbitanLuarnegaraPage {
         semakan_catatantidaklengkap: data[0].semakan_catatantidaklengkap
 
       }
+      this.cetakPdf.idp = data[0].md5_permohonan_id;
+      this.cetakPdf.ids = data[0].md5_syarikat_id;
+
+      console.log('cetak pdf params : ' + JSON.stringify(this.cetakPdf));
       console.log('terbitan luar negara: ' + JSON.stringify( data[0].permohonan_status )+ 
       JSON.stringify( data[0].permohonan_tarikhdaftar )+ 
         JSON.stringify( data[0].jenis_permohonan )+ 
@@ -56,6 +72,8 @@ export class TerbitanLuarnegaraPage {
         JSON.stringify( data[0].sijil_tarikhmula)+ 
         JSON.stringify( data[0].sijil_tarikhtamat ));
     }).catch(err => {
+      alert('Tiada data Permohonan Luar Negara!');
+      this.navCtrl.setRoot(HomePage);
        console.log("Failed to get terbitan luar negara !: " + err);
     });
   }

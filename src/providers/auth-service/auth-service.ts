@@ -4,9 +4,16 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 
-let apiURL = 'http://localhost/epembekal/api/login.php';
-let apiSemakanStatus = 'http://localhost/epembekal/api/semakan-status.php?';
-let apiBaseUrl = "http://localhost/epembekal/api";
+//let apiURL = 'http://localhost/epembekal/api/login.php';
+//let apiSemakanStatus = 'http://localhost/epembekal/api/semakan-status.php?';
+//let apiBaseUrl = "http://localhost/epembekal/api";
+
+let apiURL = 'http://203.217.179.121/api/epembekal/login.php';
+let apiSemakanStatus = 'http://203.217.179.121/api/epembekal/semakan-status.php?';
+let apiBaseUrl = "http://203.217.179.121/api/epembekal";
+
+
+
 
 @Injectable()
 export class AuthServiceProvider {

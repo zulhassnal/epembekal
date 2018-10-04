@@ -10,6 +10,27 @@
 
 <ion-content padding>
 
+
+      <ion-grid>
+          <ion-row>
+            <ion-col col-5>
+
+            </ion-col>
+            <ion-col col-7>
+                <ion-item>
+                    <ion-label>Pilih Bahasa</ion-label>
+                    <ion-select [(ngModel)]="bahasa">
+                      <ion-option value="f">Malaysia</ion-option>
+                      <ion-option value="m">English</ion-option>
+                    </ion-select>
+                  </ion-item>
+            </ion-col>
+ 
+          </ion-row>
+       
+        </ion-grid>
+
+
   <ion-slides pager style=" height: 200px;" >
     <ion-slide *ngFor="let listpengumuman of pengumuman">
       <p>{{ listpengumuman.pengumuman_summary }}...<span (click)="detailPengumuman(listpengumuman)">Selanjutnya</span></p>
