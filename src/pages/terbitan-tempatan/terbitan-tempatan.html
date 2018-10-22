@@ -19,103 +19,91 @@ Ionic pages and navigation.
 <ion-content padding>
 
   <div *ngIf="terbitanTempatan.permohonan_status == 'BARU'">
-    <div>{{ terbitanTempatan.permohonan_status }}</div>
+    <div>        <img class="displayed"  height="160 px" width="160 px" src="../assets/imgs/PERMOHONANBARU.png"></div>
     <ion-grid>
       <ion-row style="background-color: blue; color: #ffffff; font-size: 18px; text-align: center;padding-top: 2%;">
         <ion-col col-12>Senarai Terbitan Tempatan</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-8>Tarikh permohonan</ion-col>
-        <ion-col col-4> {{ terbitanTempatan.permohonan_tarikhdaftar }}</ion-col>
+        <ion-col col-6>Tarikh permohonan</ion-col>
+        <ion-col col-6> {{ terbitanTempatan.permohonan_tarikhdaftar }}</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-8>Jenis permohonan</ion-col>
-        <ion-col col-4 text-wrap>{{ terbitanTempatan.jenis_permohonan }}</ion-col>
+        <ion-col col-6>Jenis permohonan</ion-col>
+        <ion-col col-6 text-wrap>{{ terbitanTempatan.jenis_permohonan }}</ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col col-8>No. Sijil</ion-col>
-        <ion-col col-4 text-wrap>{{ terbitanTempatan.no_sijil }}</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-8>Status Sijil</ion-col>
-        <ion-col col-4>{{ terbitanTempatan.status_sijil }}</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-8>Tarikh Mula Sijil</ion-col>
-        <ion-col col-4>{{ terbitanTempatan.sijil_tarikhmula }}</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-8>Tarikh Tamat Sijil</ion-col>
-        <ion-col col-4>{{ terbitanTempatan.sijil_tarikhtamat }}</ion-col>
-      </ion-row> 
-      <ion-row>
-        <ion-col col-12 style="text-align:center;"><button ion-button icon-start><ion-icon name="document"></ion-icon> Cetak Status</button></ion-col>
-      </ion-row>         
+     
+        
     </ion-grid>
   </div>
 
 
   <div *ngIf="terbitanTempatan.permohonan_status == 'TELAH DISEMAK'">
-    <div>{{ terbitanTempatan.permohonan_status }}</div>
+
+    <div *ngIf="terbitanTempatan.permohonan_status == 'TELAH DISEMAK' && terbitanTempatan.semakan_status == 'DOKUMEN TIDAK LENGKAP'">  <img class="displayed"  height="160 px" width="160 px" src="../assets/imgs/SEMAKTAKLENGKAP.png"></div>
+    <div *ngIf="terbitanTempatan.permohonan_status == 'TELAH DISEMAK' && terbitanTempatan.semakan_status == 'DOKUMEN LENGKAP'">  
+      <img class="displayed"  height="160 px" width="160 px" src="../assets/imgs/SEMAK.png"></div>
+
     <ion-grid>
-      <ion-row style="background-color: blue; color: #ffffff; font-size: 18px; text-align: center;padding-top: 2%;">
+     <ion-row style="background-color: grey; color: #ffffff; font-size: 17px; text-align: center;padding: 2%;">
         <ion-col col-12>Senarai Terbitan Tempatan</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-8>Tarikh permohonan</ion-col>
-        <ion-col col-4> {{ terbitanTempatan.permohonan_tarikhdaftar }}</ion-col>
+        <ion-col col-6>Tarikh permohonan</ion-col>
+        <ion-col col-6> {{ terbitanTempatan.permohonan_tarikhdaftar }}</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-8>Jenis permohonan</ion-col>
-        <ion-col col-4 text-wrap>{{ terbitanTempatan.jenis_permohonan }}</ion-col>
+        <ion-col col-6>Jenis permohonan</ion-col>
+        <ion-col col-6 text-wrap>{{ terbitanTempatan.jenis_permohonan }}</ion-col>
       </ion-row>
       <ion-row>
-          <ion-col col-8>semakan_status</ion-col>
-          <ion-col col-4 text-wrap>{{ terbitanTempatan.semakan_status }}</ion-col>
+          <ion-col col-6>Status semakan</ion-col>
+          <ion-col col-6 text-wrap>{{ terbitanTempatan.semakan_status }}</ion-col>
         </ion-row>
       <ion-row *ngIf="terbitanTempatan.semakan_status == 'DOKUMEN TIDAK LENGKAP'">
-        <ion-col col-12 style="text-align:center;"><button ion-button icon-start color="danger" (click)="showDetail(terbitanTempatan.semakan_catatantidaklengkap)"><ion-icon name="alert"></ion-icon> Perincian</button></ion-col>
+        <ion-col col-12 style="text-align:center;"><button ion-button round icon-start color="danger" (click)="showDetail(terbitanTempatan.semakan_catatantidaklengkap)"><ion-icon name="alert"></ion-icon> Perincian</button></ion-col>
       </ion-row>         
     </ion-grid>
   </div>
   
 
   <div *ngIf="terbitanTempatan.permohonan_status == 'TELAH DISAH'">
-    <div>{{ terbitanTempatan.permohonan_status }}</div>
+    <div>  <img class="displayed"  height="160 px" width="160 px" src="../assets/imgs/DISAHKAN.png"></div>
     <ion-grid>
-      <ion-row style="background-color: blue; color: #ffffff; font-size: 18px; text-align: center;padding-top: 2%;">
+      <ion-row style="background-color: grey; color: #ffffff; font-size: 17px; text-align: center;padding: 2%;">
         <ion-col col-12>Senarai Terbitan Tempatan</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-8>Tarikh permohonan</ion-col>
-        <ion-col col-4> {{ terbitanTempatan.permohonan_tarikhdaftar }}</ion-col>
+        <ion-col col-6>Tarikh permohonan</ion-col>
+        <ion-col col-6> {{ terbitanTempatan.permohonan_tarikhdaftar }}</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-8>Jenis permohonan</ion-col>
-        <ion-col col-4 text-wrap>{{ terbitanTempatan.jenis_permohonan }}</ion-col>
+        <ion-col col-6>Jenis permohonan</ion-col>
+        <ion-col col-6 text-wrap>{{ terbitanTempatan.jenis_permohonan }}</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-8>No. Sijil</ion-col>
-        <ion-col col-4 text-wrap>{{ terbitanTempatan.no_sijil }}</ion-col>
+        <ion-col col-6>No. Sijil</ion-col>
+        <ion-col col-6 text-wrap>{{ terbitanTempatan.no_sijil }}</ion-col>
+      </ion-row>
+      <ion-row *ngIf="terbitanTempatan.status_sijil == 'TAMAT'">
+        <ion-col col-6>Status Sijil</ion-col>
+        <ion-col col-6><button ion-button color="danger">{{ terbitanTempatan.status_sijil }}</button></ion-col>
+      </ion-row>
+      <ion-row *ngIf="terbitanTempatan.status_sijil == 'AKTIF'">
+          <ion-col col-6>Status Sijil</ion-col>
+          <ion-col col-6><button ion-button color="secondary">{{ terbitanTempatan.status_sijil }}</button></ion-col>
+        </ion-row>
+      <ion-row>
+        <ion-col col-6>Tarikh Mula Sijil</ion-col>
+        <ion-col col-6>{{ terbitanTempatan.sijil_tarikhmula }}</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-8>Status Sijil</ion-col>
-        <ion-col col-4>{{ terbitanTempatan.status_sijil }}</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-8>Tarikh Mula Sijil</ion-col>
-        <ion-col col-4>{{ terbitanTempatan.sijil_tarikhmula }}</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-8>Tarikh Tamat Sijil</ion-col>
-        <ion-col col-4>{{ terbitanTempatan.sijil_tarikhtamat }}</ion-col>
+        <ion-col col-6>Tarikh Tamat Sijil</ion-col>
+        <ion-col col-6>{{ terbitanTempatan.sijil_tarikhtamat }}</ion-col>
       </ion-row> 
-      <ion-row>
-        <ion-col col-12 style="text-align:center;">
-          <!--
-            http://epembekal.kkmm.gov.my/sijil/sijil-pdf-tempatan.php?ids=c4ca4238a0b923820dcc509a6f75849b&idp=1e4d36177d71bbb3558e43af9577d70e&sid=0.4884772589194153
-          -->
-          <a ion-button icon-start href="http://epembekal.kkmm.gov.my/sijil/sijil-pdf-tempatan.php?ids={{ cetakPdf.ids }}&idp={{ cetakPdf.idp }}&sid={{ cetakPdf.sid }}">
+      <ion-row *ngIf="terbitanTempatan.status_sijil != 'TAMAT'">
+        <ion-col col-12 style="text-align:center;">          
+          <a ion-button round icon-start href="http://203.217.179.121/api/epembekal/pdf/sijil-tempatan@{{ userData.syarikat_nodaftarmof }}.pdf">
             <ion-icon name="document"></ion-icon> Cetak PDF
           </a>
         </ion-col>

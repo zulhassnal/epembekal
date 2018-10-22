@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { AlertController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home';
 import { PengumumanPage } from '../pengumuman/pengumuman';
@@ -17,7 +17,7 @@ export class LoginPage {
   pengumuman : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-  public authService:AuthServiceProvider) {
+  public authService:AuthServiceProvider,public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -62,4 +62,40 @@ export class LoginPage {
     this.navCtrl.push(PengumumanPage, {item : params});
     console.log('detail pengumuman : ' +  params);
   }
+
+  presentPrompt() {
+    let alert = this.alertCtrl.create({
+      title: 'Reset Katalaluan',
+      inputs: [
+        {
+          name: 'Email',
+          placeholder: 'email'
+        }
+
+      ],
+      buttons: [
+        {
+          text: 'Batal',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Reset Katalaluan',
+          handler: data => {
+            //if (User.isValid(data.username, data.password)) {
+              // logged in!
+            //} else {
+              // invalid login
+            //  return false;
+           // }
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+
 }

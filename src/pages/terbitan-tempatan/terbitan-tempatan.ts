@@ -45,7 +45,7 @@ export class TerbitanTempatanPage {
     let pengguna_id = user["pengguna_id"];
 
     this.api.terbitanTempatan(pengguna_id).then( result => {
-      // console.log("Home.ts Result :" + result);
+     //  console.log("Home.ts Result :" + result);
       let list : any = result;
       let data = list.terbitan_tempatan;
       //this.terbitanTempatan = JSON.stringify( data[0] );
@@ -71,7 +71,8 @@ export class TerbitanTempatanPage {
         JSON.stringify( data[0].no_sijil )+ 
         JSON.stringify( data[0].status_sijil )+ 
         JSON.stringify( data[0].sijil_tarikhmula)+ 
-        JSON.stringify( data[0].sijil_tarikhtamat ));
+        JSON.stringify( data[0].sijil_tarikhtamat )+
+        JSON.stringify( data[0].semakan_status));
     }).catch(err => {
       alert('Tiada data Permohonan Tempatan!');
       this.navCtrl.setRoot(HomePage);
@@ -104,5 +105,6 @@ export class TerbitanTempatanPage {
   }
 
 
+  
 
 }

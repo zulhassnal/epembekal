@@ -2,7 +2,7 @@
 <ion-header style="background-color: blueviolet;">
 
   <ion-navbar>
-    <ion-title>Aplikasi Atas Talian</ion-title>
+    <ion-title>Semakan Permohonan</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -13,32 +13,29 @@
 
       <ion-grid>
           <ion-row>
-            <ion-col col-5>
+            <ion-col col-6>
 
             </ion-col>
-            <ion-col col-7>
-                <ion-item>
-                    <ion-label>Pilih Bahasa</ion-label>
-                    <ion-select [(ngModel)]="bahasa">
-                      <ion-option value="f">Malaysia</ion-option>
-                      <ion-option value="m">English</ion-option>
-                    </ion-select>
-                  </ion-item>
+            <ion-col col-6>
+
+                      <ion-select style="  max-width: 100%!important;  width: 100%!important; float:left;">
+                        <ion-option value="f" selected>B.Melayu</ion-option>
+                        <ion-option value="m">English</ion-option>
+                        </ion-select>
+
             </ion-col>
- 
-          </ion-row>
-       
+           </ion-row> 
         </ion-grid>
 
 
-  <ion-slides pager style=" height: 200px;" >
+  <ion-slides pager style=" height: 165px; background-image: url(../assets/imgs/slidder.png) ; background-size: 100%;">
     <ion-slide *ngFor="let listpengumuman of pengumuman">
       <p>{{ listpengumuman.pengumuman_summary }}...<span (click)="detailPengumuman(listpengumuman)">Selanjutnya</span></p>
     </ion-slide>
   </ion-slides>
 
-  <div class="title-box">
-    Semakan Status Permohonan
+  <div style="text-align:center;">
+    Sila masukkan ID Pengguna dan Katalaluan di bawah :
   </div>
 <ion-list>
 
@@ -53,7 +50,21 @@
   </ion-item>
 
 </ion-list>
+<div style="text-align:center; width:100%; padding:0;"></div>
+<button ion-button icon-start color="dark" full round style="padding: 23px; text-align:center;" (click)="LoginViaAPI()"><ion-icon name="log-in"></ion-icon> Hantar</button>
 
-<button ion-button icon-start block (click)="LoginViaAPI()"><ion-icon name="log-in"></ion-icon> Hantar</button>
+<div style="text-align:right; color:blue;padding: 10px;">
+  
+  <a (click)="presentPrompt()">Lupa katalaluan?</a>
+ 
+</div>
+
+
+
+
+
+<div style="text-align:center;padding: 10px;color:grey;">
+© Copyright 2018 All Rights Reserved. Hakhaton. BPM, KKMM.
+</div>
 
 </ion-content>

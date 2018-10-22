@@ -70,10 +70,11 @@ export class TerbitanLuarnegaraPage {
         JSON.stringify( data[0].no_sijil )+ 
         JSON.stringify( data[0].status_sijil )+ 
         JSON.stringify( data[0].sijil_tarikhmula)+ 
-        JSON.stringify( data[0].sijil_tarikhtamat ));
+        JSON.stringify( data[0].sijil_tarikhtamat )+
+        JSON.stringify( data[0].semakan_status));
     }).catch(err => {
-      alert('Tiada data Permohonan Luar Negara!');
-      this.navCtrl.setRoot(HomePage);
+     alert('Tiada data Permohonan Luar Negara!');
+         this.navCtrl.setRoot(HomePage);
        console.log("Failed to get terbitan luar negara !: " + err);
     });
   }
@@ -102,4 +103,8 @@ export class TerbitanLuarnegaraPage {
     confirm.present();
   }
 
+
+
+
+  
 }
