@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { CallNumber } from '@ionic-native/call-number';
 
 /*
   Generated class for the ApiProvider provider.
@@ -18,9 +19,19 @@ export class ApiProvider {
 
   constructor(
     public http: Http, 
-    public httpClient : HttpClient
+    public httpClient : HttpClient,
+    private callNumber: CallNumber
   ) {
     console.log('Hello ApiProvider Provider');
+  }
+
+  dateformating(data){ // yyyy-mm-dd
+    let year = data.substring(0, 4);
+    let month = data.substring(5, 7);
+    let day = data.substring(8, 10);
+    let fulldate = day + '-' + month + '-' + year;
+
+    return fulldate;
   }
 
   utamaTempatan(pengguna_id){
@@ -91,6 +102,11 @@ export class ApiProvider {
     })
   }
 
+  callPerform(){
+    this.callNumber.callNumber("0199553193", true)
+  .then(res => console.log('Launched dialer!', res))
+  .catch(err => console.log('Error launching dialer', err));
+  }
 
 
 }

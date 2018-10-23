@@ -62,9 +62,21 @@ Ionic pages and navigation.
             <ion-col col-6>Status semakan</ion-col>
             <ion-col col-6 text-wrap>{{ terbitanLuarNegara.semakan_status }}</ion-col>
           </ion-row>
-        <ion-row *ngIf="terbitanLuarNegara.semakan_status == 'DOKUMEN TIDAK LENGKAP'">
-          <ion-col col-12 style="text-align:center;"><button ion-button round icon-start color="danger" (click)="showDetail(terbitanLuarNegara.semakan_catatantidaklengkap)"><ion-icon name="alert"></ion-icon> Perincian</button></ion-col>
-        </ion-row>         
+
+        <span *ngIf="terbitanLuarNegara.semakan_status == 'DOKUMEN TIDAK LENGKAP'">
+                <ion-row>
+                  <ion-col style="text-align:center;"><button ion-button round icon-start color="danger" (click)="hideShowPerincian()" ><ion-icon name="alert"></ion-icon> Perincian</button></ion-col>
+                </ion-row>
+                <ion-row *ngIf="showHidePerincian == true">
+                  <ion-col>{{terbitanLuarNegara.semakan_catatantidaklengkap}}
+                    <div>
+                      <button ion-fab float-right (click)="callNumber()">
+                        <ion-icon name="call"></ion-icon>
+                      </button>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </span>         
       </ion-grid>
     </div>
     
@@ -100,11 +112,11 @@ Ionic pages and navigation.
         </ion-row>
         <ion-row>
           <ion-col col-6>Tarikh Mula Sijil</ion-col>
-          <ion-col col-6>{{ terbitanLuarNegara.sijil_tarikhmula }}</ion-col>
+          <ion-col col-6>{{ terbitanLuarNegara.sijil_tarikhmula_display }}</ion-col>
         </ion-row>
         <ion-row>
           <ion-col col-6>Tarikh Tamat Sijil</ion-col>
-          <ion-col col-6>{{ terbitanLuarNegara.sijil_tarikhtamat }}</ion-col>
+          <ion-col col-6>{{ terbitanLuarNegara.sijil_tarikhtamat_display }}</ion-col>
         </ion-row> 
         <ion-row *ngIf="terbitanLuarNegara.status_sijil != 'TAMAT'">
           <ion-col col-12 style="text-align:center;">          
@@ -115,6 +127,8 @@ Ionic pages and navigation.
         </ion-row>        
       </ion-grid>
     </div>
-  
+
+   
+
   </ion-content>
   

@@ -17,6 +17,7 @@ import { HomePage} from '../home/home'
   templateUrl: 'terbitan-tempatan.html',
 })
 export class TerbitanTempatanPage {
+  showHidePerincian:boolean;
   userData = [];
   //terbitanTempatan: any;
   cetakPdf: {
@@ -24,18 +25,41 @@ export class TerbitanTempatanPage {
     idp: string,
     sid: number
   }
-  terbitanTempatan : {permohonan_status: string,permohonan_tarikhdaftar:Date,jenis_permohonan:string,
-    no_sijil:string, status_sijil:string, sijil_tarikhmula:Date, sijil_tarikhtamat:Date, semakan_status:string, semakan_catatantidaklengkap:string}
+  terbitanTempatan : {
+    permohonan_status: string,
+    permohonan_tarikhdaftar:Date,
+    jenis_permohonan:string,
+    no_sijil:string, 
+    status_sijil:string, 
+    sijil_tarikhmula:Date,
+    sijil_tarikhmula_display:string, 
+    sijil_tarikhtamat:Date, 
+    sijil_tarikhtamat_display:string,
+    semakan_status:string, 
+    semakan_catatantidaklengkap:string
+  }
   constructor(public api: ApiProvider, public navCtrl: NavController, 
     public navParams: NavParams,public alertCtrl: AlertController) {
-      this.terbitanTempatan = {permohonan_status: null, permohonan_tarikhdaftar: null,
-        jenis_permohonan:null, no_sijil:null, status_sijil:null, sijil_tarikhmula:null, sijil_tarikhtamat:null, semakan_status:null, semakan_catatantidaklengkap:null}
+      this.terbitanTempatan = {
+        permohonan_status: null, 
+        permohonan_tarikhdaftar: null,
+        jenis_permohonan:null, 
+        no_sijil:null, 
+        status_sijil:null, 
+        sijil_tarikhmula:null,
+        sijil_tarikhmula_display:null, 
+        sijil_tarikhtamat:null, 
+        sijil_tarikhtamat_display:null,
+        semakan_status:null, 
+        semakan_catatantidaklengkap:null
+      }
       
       this.cetakPdf = {
         ids: null,
         idp: null,
         sid: Math.random()
       }
+      this.showHidePerincian=false;
   }
 
   ionViewDidLoad() {
@@ -49,6 +73,7 @@ export class TerbitanTempatanPage {
       let list : any = result;
       let data = list.terbitan_tempatan;
       //this.terbitanTempatan = JSON.stringify( data[0] );
+
       this.terbitanTempatan = {
         permohonan_status: data[0].permohonan_status,
         permohonan_tarikhdaftar: data[0].permohonan_tarikhdaftar,
@@ -56,7 +81,9 @@ export class TerbitanTempatanPage {
         no_sijil: data[0].no_sijil,
         status_sijil: data[0].status_sijil,
         sijil_tarikhmula: data[0].sijil_tarikhmula,
+        sijil_tarikhmula_display: this.api.dateformating(data[0].sijil_tarikhmula),
         sijil_tarikhtamat: data[0].sijil_tarikhtamat,
+        sijil_tarikhtamat_display: this.api.dateformating(data[0].sijil_tarikhtamat),
         semakan_status: data[0].semakan_status,
         semakan_catatantidaklengkap: data[0].semakan_catatantidaklengkap
 
@@ -90,13 +117,14 @@ export class TerbitanTempatanPage {
         {
           text: 'Tutup',
           handler: () => {
-            console.log('Disagree clicked');
+            console.log('Tutup clicked');
           }
         },
         {
-          text: 'Chit Chat',
+          text: 'Hubungi Urusetia',
           handler: () => {
-            console.log('Agree clicked');
+            this.api.callPerform();
+            console.log('Call clicked');
           }
         }
       ]
@@ -104,7 +132,19 @@ export class TerbitanTempatanPage {
     confirm.present();
   }
 
-
+  callNumber(){
+   this.api.callPerform();
+  }
   
+
+  hideShowPerincian(){
+    if(this.showHidePerincian==true){
+      this.showHidePerincian=false;
+    }else{
+      this.showHidePerincian=true;
+    }
+
+    console.log('hideShowPerincian : ' +  this.showHidePerincian);
+  }
 
 }
