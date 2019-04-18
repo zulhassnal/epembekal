@@ -1,6 +1,8 @@
 {
-  "name": "sample_sidemenu",
-  "app_id": "",
+  "name": "Ionic3-Multi-Purpose-Theme",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
-  "integrations": {}
+  "pro_id": "5587e433"
 }

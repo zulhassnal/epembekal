@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ApiProvider } from '../../providers/api/api';
+import { Api } from '../../providers/api/api';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @Component({
@@ -17,7 +17,7 @@ export class HomePage {
   //user = [];
   constructor(
     public navCtrl: NavController,
-    public api: ApiProvider,
+    public api: Api,
     public authService:AuthServiceProvider
   ) {
     this.utamaTempatan = {total: null, baru: null, semula: null, semak: null, sah: null, sijil: null}

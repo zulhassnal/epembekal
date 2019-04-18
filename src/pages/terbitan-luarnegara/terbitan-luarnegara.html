@@ -8,9 +8,11 @@ Ionic pages and navigation.
 
     <ion-navbar>
       <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
+        <ion-icon name="menu" text-color="my-custom-color"></ion-icon>
       </button>
-      <ion-title>{{ userData.syarikat_nama }}</ion-title>
+      <ion-title>
+          <span text-color="my-custom-color">Terbitan Luar Negara</span>
+        </ion-title>
     </ion-navbar>
   
   </ion-header>
@@ -19,111 +21,112 @@ Ionic pages and navigation.
   <ion-content padding>
   
     <div *ngIf="terbitanLuarNegara.permohonan_status == 'BARU'">
-      <div>
-        <img class="displayed"  height="160 px" width="160 px" src="../assets/imgs/PERMOHONANBARU.png">
-      </div>
       <ion-grid>
-        <ion-row style="background-color: grey; color: #ffffff; font-size: 17px; text-align: center;padding: 2%;">
-          <ion-col col-12>Senarai Terbitan Luar Negara</ion-col>
+        <ion-row>
+          <ion-col col-12 class="border-underline">
+              Tarikh permohonan :
+            <p>{{ terbitanLuarNegara.permohonan_tarikhdaftar }}</p>
+          </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col col-6>Tarikh permohonan</ion-col>
-          <ion-col col-6> {{ terbitanLuarNegara.permohonan_tarikhdaftar }}</ion-col>
+          <ion-col col-12 class="border-underline">
+              Jenis permohonan :
+            <p>{{ terbitanLuarNegara.jenis_permohonan }}</p>
+          </ion-col>
         </ion-row>
-        <ion-row>
-          <ion-col col-6>Jenis permohonan</ion-col>
-          <ion-col col-6 text-wrap>{{ terbitanLuarNegara.jenis_permohonan }}</ion-col>
-        </ion-row>
-       
-             
       </ion-grid>
     </div>
   
   
-    <div *ngIf="terbitanLuarNegara.permohonan_status == 'TELAH DISEMAK'">
-        <div *ngIf="terbitanLuarNegara.permohonan_status == 'TELAH DISEMAK' && terbitanLuarNegara.semakan_status == 'DOKUMEN TIDAK LENGKAP'">  
-        <img class="displayed"  height="160 px" width="160 px" src="../assets/imgs/SEMAKTAKLENGKAP.png"></div>
-    <div *ngIf="terbitanLuarNegara.permohonan_status == 'TELAH DISEMAK' && terbitanLuarNegara.semakan_status == 'DOKUMEN LENGKAP'">  
-      <img class="displayed"  height="160 px" width="160 px" src="../assets/imgs/SEMAK.png"></div>
-
+    <div *ngIf="terbitanLuarNegara.permohonan_status == 'TELAH DISEMAK'">        
       <ion-grid>
-          <ion-row style="background-color: grey; color: #ffffff; font-size: 17px; text-align: center;padding: 2%;">
-          <ion-col col-12>Senarai Terbitan Luar Negara</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col col-6>Tarikh permohonan</ion-col>
-          <ion-col col-6> {{ terbitanLuarNegara.permohonan_tarikhdaftar }}</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col col-6>Jenis permohonan</ion-col>
-          <ion-col col-6 text-wrap>{{ terbitanLuarNegara.jenis_permohonan }}</ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col col-6>Status semakan</ion-col>
-            <ion-col col-6 text-wrap>{{ terbitanLuarNegara.semakan_status }}</ion-col>
+          <ion-row>
+            <ion-col col-12 class="border-underline">
+                Tarikh permohonan :
+              <p>{{ terbitanLuarNegara.permohonan_tarikhdaftar }}</p>
+            </ion-col>
           </ion-row>
-
-        <span *ngIf="terbitanLuarNegara.semakan_status == 'DOKUMEN TIDAK LENGKAP'">
-                <ion-row>
-                  <ion-col style="text-align:center;"><button ion-button round icon-start color="danger" (click)="hideShowPerincian()" ><ion-icon name="alert"></ion-icon> Perincian</button></ion-col>
-                </ion-row>
-                <ion-row *ngIf="showHidePerincian == true">
-                  <ion-col>{{terbitanLuarNegara.semakan_catatantidaklengkap}}
-                    <div>
-                      <button ion-fab float-right (click)="callNumber()">
-                        <ion-icon name="call"></ion-icon>
-                      </button>
-                    </div>
-                  </ion-col>
-                </ion-row>
-              </span>         
-      </ion-grid>
+          <ion-row>
+            <ion-col col-12 class="border-underline">
+                Jenis permohonan :
+              <p>{{ terbitanLuarNegara.jenis_permohonan }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12 class="border-underline">
+                Status semakan :
+              <p>{{ terbitanLuarNegara.semakan_status }}</p>
+            </ion-col>
+          </ion-row>
+  
+          <span *ngIf="terbitanLuarNegara.semakan_status == 'DOKUMEN TIDAK LENGKAP'">
+                  <ion-row>
+                    <ion-col style="text-align:center;"><button ion-button round icon-start color="danger" (click)="hideShowPerincian()" ><ion-icon name="alert"></ion-icon> Perincian</button></ion-col>
+                  </ion-row>
+                  <ion-row *ngIf="showHidePerincian == true">
+                    <ion-col col-12 class="border-underline">{{terbitanLuarNegara.semakan_catatantidaklengkap}}
+                      <div>
+                        <button ion-fab float-right (click)="callNumber()">
+                          <ion-icon name="call"></ion-icon>
+                        </button>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                </span>         
+        </ion-grid>
     </div>
     
   
     <div *ngIf="terbitanLuarNegara.permohonan_status == 'TELAH DISAH'">
-      <div>
-          <img class="displayed"  height="160 px" width="160 px" src="../assets/imgs/DISAHKAN.png">
-        
-      </div>
       <ion-grid>
-          <ion-row style="background-color: grey; color: #ffffff; font-size: 17px; text-align: center;padding: 2%;">
-          <ion-col col-12>Senarai Terbitan Luar Negara</ion-col>
+        <ion-row>
+          <ion-col col-12 class="border-underline">
+            Status Permohonan :
+            <p>{{ terbitanLuarNegara.permohonan_status }}</p>
+          </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col col-6>Tarikh permohonan</ion-col>
-          <ion-col col-6> {{ terbitanLuarNegara.permohonan_tarikhdaftar }}</ion-col>
+          <ion-col col-12 class="border-underline">
+            Tarikh permohonan :
+          <p>{{ terbitanLuarNegara.permohonan_tarikhdaftar }}</p>
+          </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col col-6>Jenis permohonan</ion-col>
-          <ion-col col-6 text-wrap>{{ terbitanLuarNegara.jenis_permohonan }}</ion-col>
+          <ion-col col-12 class="border-underline">
+            Jenis permohonan :
+            <p text-wrap>{{ terbitanLuarNegara.jenis_permohonan }}</p>
+          </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col col-6>No. Sijil</ion-col>
-          <ion-col col-6 text-wrap>{{ terbitanLuarNegara.no_sijil }}</ion-col>
-        </ion-row>
-        <ion-row  *ngIf="terbitanLuarNegara.status_sijil == 'TAMAT'">
-          <ion-col col-6>Status Sijil</ion-col>
-          <ion-col col-6><button ion-button color="danger">{{ terbitanLuarNegara.status_sijil }}</button></ion-col>
-        </ion-row>
-        <ion-row  *ngIf="terbitanLuarNegara.status_sijil == 'AKTIF'">
-            <ion-col col-6>Status Sijil</ion-col>
-            <ion-col col-6><button ion-button color="secondary">{{ terbitanLuarNegara.status_sijil }}</button></ion-col>
+          <ion-col col-12 class="border-underline">
+            No. Sijil :
+          <p text-wrap>{{ terbitanLuarNegara.no_sijil }}</p>
+          </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col col-6>Tarikh Mula Sijil</ion-col>
-          <ion-col col-6>{{ terbitanLuarNegara.sijil_tarikhmula_display }}</ion-col>
+          <ion-col col-12 class="border-underline">
+            Status Sijil :
+          <p>{{ terbitanLuarNegara.status_sijil }}</p>
+          </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col col-6>Tarikh Tamat Sijil</ion-col>
-          <ion-col col-6>{{ terbitanLuarNegara.sijil_tarikhtamat_display }}</ion-col>
+          <ion-col col-12 class="border-underline">
+            Tarikh Mula Sijil :
+          <p>{{ terbitanLuarNegara.sijil_tarikhmula_display }}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12 class="border-underline">
+            Tarikh Tamat Sijil :
+          <p>{{ terbitanLuarNegara.sijil_tarikhtamat_display }}</p>
+          </ion-col>
         </ion-row> 
         <ion-row *ngIf="terbitanLuarNegara.status_sijil != 'TAMAT'">
-          <ion-col col-12 style="text-align:center;">          
-            <a ion-button round icon-start href="http://203.217.179.121/api/epembekal/pdf/sijil-luar-negara@{{ userData.syarikat_nodaftarmof }}.pdf">
-              <ion-icon name="document"></ion-icon> Cetak PDF
-            </a>
-          </ion-col>
+          <ion-col col-12 style="text-align:center;">
+          <a ion-button round icon-start href="{{ mainSystemUrl }}/sijil/sijil-pdf-luar-negara.php?ids={{cetakPdf.ids}}&idp={{cetakPdf.idp}}&sid={{cetakPdf.sid}}&pengguna_peranan={{cetakPdf.idp}}&mobile=1&_token={{cetakPdf._token}}">
+            <ion-icon name="document"></ion-icon> Cetak PDF
+          </a>
+        </ion-col>
         </ion-row>        
       </ion-grid>
     </div>

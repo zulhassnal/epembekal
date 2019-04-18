@@ -1,28 +1,58 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { CallNumber } from '@ionic-native/call-number';
+//import { CallNumber } from '@ionic-native/call-number';
 
-/*
-  Generated class for the ApiProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-
-//let apiBaseUrl = "http://localhost/epembekal/api";
-let apiBaseUrl ="http://203.217.179.121/api/epembekal";
-
+/**
+ * Api is a generic REST Api handler. Set your API url first.
+ */
 @Injectable()
-export class ApiProvider {
+export class Api {
+  url: string = 'http://epembekal.local/api';
+  mainSystemUrl_: string = "http://epembekal.local/";
 
   constructor(
-    public http: Http, 
-    public httpClient : HttpClient,
-    private callNumber: CallNumber
-  ) {
-    console.log('Hello ApiProvider Provider');
+    public http: HttpClient,
+    //private callNumber: CallNumber
+    ) {
+  }
+
+  mainSystemUrl(){
+    return this.mainSystemUrl_;
+  }
+  
+  get(endpoint: string, params?: any, reqOpts?: any) {
+    if (!reqOpts) {
+      reqOpts = {
+        params: new HttpParams()
+      };
+    }
+
+    // Support easy query params for GET requests
+    if (params) {
+      reqOpts.params = new HttpParams();
+      for (let k in params) {
+        reqOpts.params = reqOpts.params.set(k, params[k]);
+      }
+    }
+
+    return this.http.get(this.url + '/' + endpoint, reqOpts);
+  }
+
+  post(endpoint: string, body: any, reqOpts?: any) {
+    return this.http.post(this.url + '/' + endpoint, body, reqOpts);
+  }
+
+  put(endpoint: string, body: any, reqOpts?: any) {
+    return this.http.put(this.url + '/' + endpoint, body, reqOpts);
+  }
+
+  delete(endpoint: string, reqOpts?: any) {
+    return this.http.delete(this.url + '/' + endpoint, reqOpts);
+  }
+
+  patch(endpoint: string, body: any, reqOpts?: any) {
+    return this.http.patch(this.url + '/' + endpoint, body, reqOpts);
   }
 
   dateformating(data){ // yyyy-mm-dd
@@ -36,10 +66,10 @@ export class ApiProvider {
 
   utamaTempatan(pengguna_id){
     console.log('Utama Tempatan...');
-    let url : string = apiBaseUrl + '/utama-tempatan-pemohon.php?pengguna_id='+ pengguna_id;
+    let url : string = this.url + '/utama-tempatan-pemohon.php?pengguna_id='+ pengguna_id;
 
     return new Promise((resolve, reject) => {
-      this.httpClient.get(url)
+      this.http.get(url)
       .subscribe(data => {
         resolve(data);
         //console.log("api utama tempatan: " + JSON.stringify(data));
@@ -53,10 +83,10 @@ export class ApiProvider {
   }
   utamaLuarNegara(pengguna_id){
     console.log('Utama Luar Negara...');
-    let url : string = apiBaseUrl + '/utama-luar-negara-pemohon.php?pengguna_id='+ pengguna_id;
+    let url : string = this.url + '/utama-luar-negara-pemohon.php?pengguna_id='+ pengguna_id;
 
     return new Promise((resolve, reject) => {
-      this.httpClient.get(url)
+      this.http.get(url)
       .subscribe(data => {
         resolve(data);
         //console.log("api utama tempatan: " + JSON.stringify(data));
@@ -71,11 +101,11 @@ export class ApiProvider {
 
 
   terbitanTempatan(pengguna_id){
-    let url : string = apiBaseUrl + '/semakan-status.php?pengguna_id='+ pengguna_id;
+    let url : string = this.url + '/semakan-status.php?pengguna_id='+ pengguna_id;
     console.log('terbitanTempatan...');
 
     return new Promise((resolve, reject) => {
-      this.httpClient.get(url)
+      this.http.get(url)
       .subscribe(data => {
         resolve(data);
         //console.log("api utama tempatan: " + JSON.stringify(data));
@@ -87,11 +117,11 @@ export class ApiProvider {
   }
 
   terbitanLuarNegara(pengguna_id){
-    let url : string = apiBaseUrl + '/semakan-status.php?pengguna_id='+ pengguna_id;
+    let url : string = this.url + '/semakan-status.php?pengguna_id='+ pengguna_id;
     console.log('terbitanLuarNegara...');
 
     return new Promise((resolve, reject) => {
-      this.httpClient.get(url)
+      this.http.get(url)
       .subscribe(data => {
         resolve(data);
         //console.log("api utama tempatan: " + JSON.stringify(data));
@@ -102,11 +132,11 @@ export class ApiProvider {
     })
   }
 
-  callPerform(){
+  /*callPerformx(){
     this.callNumber.callNumber("0199553193", true)
   .then(res => console.log('Launched dialer!', res))
   .catch(err => console.log('Error launching dialer', err));
+  }*/
+  callPerform(){
   }
-
-
 }

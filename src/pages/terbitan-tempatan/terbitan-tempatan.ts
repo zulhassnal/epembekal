@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import { ApiProvider } from '../../providers/api/api';
+import { Api } from '../../providers/api/api';
 import { HomePage} from '../home/home'
 
 /**
@@ -11,7 +11,7 @@ import { HomePage} from '../home/home'
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-terbitan-tempatan',
   templateUrl: 'terbitan-tempatan.html',
@@ -19,11 +19,14 @@ import { HomePage} from '../home/home'
 export class TerbitanTempatanPage {
   showHidePerincian:boolean;
   userData = [];
+  mainSystemUrl: any;
   //terbitanTempatan: any;
   cetakPdf: {
     ids: string,
     idp: string,
-    sid: number
+    sid: number,
+    _token: string,
+    pengguna_peranan: number
   }
   terbitanTempatan : {
     permohonan_status: string,
@@ -38,7 +41,7 @@ export class TerbitanTempatanPage {
     semakan_status:string, 
     semakan_catatantidaklengkap:string
   }
-  constructor(public api: ApiProvider, public navCtrl: NavController, 
+  constructor(public api: Api, public navCtrl: NavController, 
     public navParams: NavParams,public alertCtrl: AlertController) {
       this.terbitanTempatan = {
         permohonan_status: null, 
@@ -57,7 +60,9 @@ export class TerbitanTempatanPage {
       this.cetakPdf = {
         ids: null,
         idp: null,
-        sid: Math.random()
+        sid: Math.random(),
+        _token: null,
+        pengguna_peranan: null
       }
       this.showHidePerincian=false;
   }
@@ -67,6 +72,7 @@ export class TerbitanTempatanPage {
     this.userData = user["syarikat_profile"];
     console.log('ionViewDidLoad TerbitanTempatanPage');
     let pengguna_id = user["pengguna_id"];
+    let pengguna_peranan = user["pengguna_peranan_id"];
 
     this.api.terbitanTempatan(pengguna_id).then( result => {
      //  console.log("Home.ts Result :" + result);
@@ -90,7 +96,10 @@ export class TerbitanTempatanPage {
       }
       this.cetakPdf.idp = data[0].md5_permohonan_id;
       this.cetakPdf.ids = data[0].md5_syarikat_id;
-
+      this.cetakPdf._token = data[0]._token;
+      this.cetakPdf.pengguna_peranan = pengguna_peranan;
+      this.mainSystemUrl = this.api.mainSystemUrl();
+      console.log(this.api.mainSystemUrl());
       console.log('cetak pdf params : ' + JSON.stringify(this.cetakPdf));
       console.log('terbitan tempatan: ' + JSON.stringify( data[0].permohonan_status )+ 
       JSON.stringify( data[0].permohonan_tarikhdaftar )+ 

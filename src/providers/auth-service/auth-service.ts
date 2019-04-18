@@ -8,10 +8,13 @@ import 'rxjs/add/operator/map';
 //let apiSemakanStatus = 'http://localhost/epembekal/api/semakan-status.php?';
 //let apiBaseUrl = "http://localhost/epembekal/api";
 
-let apiURL = 'http://203.217.179.121/api/epembekal/login.php';
-let apiSemakanStatus = 'http://203.217.179.121/api/epembekal/semakan-status.php?';
-let apiBaseUrl = "http://203.217.179.121/api/epembekal";
+//let apiURL = 'http://203.217.179.121/api/epembekal/login.php';
+//let apiSemakanStatus = 'http://203.217.179.121/api/epembekal/semakan-status.php?';
+//let apiBaseUrl = "http://203.217.179.121/api/epembekal";
 
+let apiURL = 'http://epembekal.local/api/login.php';
+let apiSemakanStatus = 'http://epembekal.local/api/semakan-status.php?';
+let apiBaseUrl = "http://epembekal.local/api";
 
 
 

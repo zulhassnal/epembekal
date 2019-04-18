@@ -1,0 +1,20 @@
+<ion-content scroll="false">
+  <div class="fixed-content">
+    <div class="logoHeader">
+      <!--<img alt="logo" height="60" style="position: relative" src="../assets/img/icon-512x512.png">-->
+      <img alt="logo" height="120" style="position: relative" src="../assets/imgs/kkmm_logo.png">
+    </div>
+    <h1 class="welcomeHeader">Kementerian Komunikasi Dan Multimedia Malaysia</h1>
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="LoginViaAPI()">
+      <div padding>
+        <ion-input type="text"  [(ngModel)]="userData.pengguna_idpengguna" class="input-access-code" placeholder="ID Pengguna" formControlName="user_name"></ion-input>
+        <br>
+        <ion-input type="password" [(ngModel)]="userData.pengguna_katalaluan" class="input-access-code" placeholder="Katalaluan" formControlName="user_pass"></ion-input>
+        <br>
+        <button ion-button icon-start class="login" full round style="padding: 23px; text-align:center;"><ion-icon name="log-in"></ion-icon> Hantar</button>
+      </div>
+    </form>
+  </div>
+
+</ion-content>
+

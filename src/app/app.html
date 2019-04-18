@@ -1,19 +1,70 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-header class="headerMAin">
+      <ion-toolbar color="primary">
+        <ion-buttons left>
+          <button class="createUser" ion-button icon-only menuClose (click)="openPage(pages[4])">
+            <ion-icon name="ios-create-outline" md="ios-create-outline" style="color:  #000000 !important;"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
-  </ion-content>
+    <ion-content class="sideMenuIoncContent">
+      
+      <ion-list class="headerMAin">
+        <ion-item style="background: #eeeeee !important;border-bottom: 0.55px solid #000000!important;">
+          <ion-list class="logoImage" menuClose (click)="openPage(pages[4])">
+            <!--<div class="circle-pic" text-center #profilePic [style.background-image]="'url(../../assets/img/advance-card-tmntr.jpg)'"></div>-->
+            <!--<img class="circle-pic" src="../../assets/img/advance-card-tmntr.jpg"/>-->
+            <img alt="logo" height="120" src="../assets/imgs/kkmm_logo.png">
+            <h3 class="userName">{{ syarikat_nama }}</h3>
+          </ion-list>
+          <h3 class="userName" style="display: none">Arnold Schwarzenegger</h3>
+          <h3 class="userDetails" style="display: none">Former Governor of California</h3>
+          <h3 class="userName" style="display: none">{{ syarikat_nama }}</h3>
+        </ion-item>
+      </ion-list>
+      
+      <ion-list>
+        
+        
+        <button menuClose ion-item no-lines style="border-top: 0.55px solid #383838; !important;"
+                [class.activeHIghlight]="checkActive(pages[1])" (click)="openPage(pages[1])" class="buttonSIdeBAr">
+          <ion-icon ios="ios-list-box-outline" class="sidebarCss" md="ios-list-box-outline"></ion-icon>
+          Utama
+        </button>
 
-</ion-menu>
+        <button menuClose ion-item no-lines [class.activeHIghlight]="checkActive(pages[2])"
+                (click)="openPage(pages[2])" class="buttonSIdeBAr">
+          <ion-icon ios="ios-notifications-outline" class="sidebarCss" md="ios-notifications-outline"></ion-icon>
+          Terbitan Tempatan
+        </button>
 
-<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+        <button menuClose ion-item no-lines [class.activeHIghlight]="checkActive(pages[3])"
+                (click)="openPage(pages[3])" class="buttonSIdeBAr">
+          <ion-icon ios="ios-notifications-outline" class="sidebarCss" md="ios-notifications-outline"></ion-icon>
+          Terbitan Luar Negara
+        </button>
+        
+        <button menuClose ion-item no-lines [class.activeHIghlight]="checkActive(pages[4])"
+                (click)="openPage(pages[4])" class="buttonSIdeBAr">
+          <ion-icon ios="ios-person-outline" class="sidebarCss" md="ios-person-outline"></ion-icon>
+          Profail
+        </button>
+
+        <button menuClose ion-item no-lines [class.activeHIghlight]="checkActive(pages[5])"
+                (click)="openPage(pages[5])" class="buttonSIdeBAr">
+                <ion-icon ios="ios-information-circle-outline" class="sidebarCss" md="ios-information-circle-outline"></ion-icon>
+          Tentang ezPembekal
+        </button>
+        
+        <button menuClose no-lines style="border-bottom: 0.55px solid #383838; !important;" ion-item
+                [class.activeHIghlight]="checkActive(pages[0])" (click)="openPage(pages[0])" class="buttonSIdeBAr">
+          <ion-icon class="sidebarCss" ios="ios-log-out-outline" md="ios-log-out-outline"></ion-icon>
+          Keluar
+        </button>
+       
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-nav #content [root]="rootPage"></ion-nav>

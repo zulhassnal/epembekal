@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import { ApiProvider } from '../../providers/api/api';
+import { Api } from '../../providers/api/api';
 import { HomePage } from '../home/home';
 
 /**
@@ -11,7 +11,7 @@ import { HomePage } from '../home/home';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-terbitan-luarnegara',
   templateUrl: 'terbitan-luarnegara.html',
@@ -19,11 +19,13 @@ import { HomePage } from '../home/home';
 export class TerbitanLuarnegaraPage {
   showHidePerincian:boolean;
   userData = [];
+  mainSystemUrl: any;
   //terbitanTempatan: any;
   cetakPdf: {
     ids: string,
     idp: string,
-    sid: number
+    sid: number,
+    _token: string
   }
   terbitanLuarNegara : {permohonan_status: string,
     permohonan_tarikhdaftar:Date,
@@ -36,7 +38,7 @@ export class TerbitanLuarnegaraPage {
     sijil_tarikhtamat_display:string,  
     semakan_status:string, 
     semakan_catatantidaklengkap:string}
-  constructor(public api: ApiProvider, public navCtrl: NavController, 
+  constructor(public api: Api, public navCtrl: NavController, 
     public navParams: NavParams,public alertCtrl: AlertController) {
       this.terbitanLuarNegara = {permohonan_status: null, 
         permohonan_tarikhdaftar: null,
@@ -53,7 +55,8 @@ export class TerbitanLuarnegaraPage {
     this.cetakPdf = {
       ids: null,
       idp: null,
-      sid: Math.random()
+      sid: Math.random(),
+      _token: null
     }
     this.showHidePerincian=false;
   }
@@ -84,7 +87,8 @@ export class TerbitanLuarnegaraPage {
       }
       this.cetakPdf.idp = data[0].md5_permohonan_id;
       this.cetakPdf.ids = data[0].md5_syarikat_id;
-
+      this.cetakPdf._token = data[0]._token;
+      this.mainSystemUrl = this.api.mainSystemUrl();
       console.log('cetak pdf params : ' + JSON.stringify(this.cetakPdf));
       console.log('terbitan luar negara: ' + JSON.stringify( data[0].permohonan_status )+ 
       JSON.stringify( data[0].permohonan_tarikhdaftar )+ 
