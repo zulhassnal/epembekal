@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-//import { CallNumber } from '@ionic-native/call-number';
+import { CallNumber } from '@ionic-native/call-number';
 
 /**
  * Api is a generic REST Api handler. Set your API url first.
@@ -13,7 +13,7 @@ export class Api {
 
   constructor(
     public http: HttpClient,
-    //private callNumber: CallNumber
+    private callNumber: CallNumber
     ) {
   }
 
@@ -132,11 +132,9 @@ export class Api {
     })
   }
 
-  /*callPerformx(){
+  callPerform(){
     this.callNumber.callNumber("0199553193", true)
   .then(res => console.log('Launched dialer!', res))
   .catch(err => console.log('Error launching dialer', err));
-  }*/
-  callPerform(){
   }
 }

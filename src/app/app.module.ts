@@ -91,7 +91,7 @@ export function provideSettings(storage: Storage) {
     StatusBar,
     Vibration,
     AuthServiceProvider,
-    //CallNumber,
+    CallNumber,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
